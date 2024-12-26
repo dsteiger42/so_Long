@@ -66,7 +66,7 @@ void flood_fill_map(char **map, int y, int x, t_vars *vars)
         return;
 
     if (map[y][x] == 'C')
-        vars->check_coll--;
+        vars->collectible_count--;
     else if (map[y][x] == 'E')
         vars->check_exit = 1;
 
@@ -100,7 +100,6 @@ int check_valid_path(t_vars *vars)
     temp = copy_map(vars->map, vars->height);
     if (!temp)
         return (0);
-    vars->check_coll = vars->collectible_count;
     vars->check_exit = 0;
     // Find player position
     for (int y = 0; y < vars->height; y++)
@@ -114,7 +113,12 @@ int check_valid_path(t_vars *vars)
             }
         }
     }
-    result = (vars->check_coll == 0 && vars->check_exit == 1);
+    result = (vars->collectible_count == 0 && vars->check_exit == 1);
     free_temp_map(temp);
     return (result);
 }
+
+
+
+
+
