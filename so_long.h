@@ -2,6 +2,8 @@
 #define SO_LONG_H
 
 #define BUFFER_SIZE 1024
+#define VISITED 2
+
 
 # define WALLS '1'
 # define FLOOR '0'
@@ -41,6 +43,8 @@ typedef struct s_vars
     int player_count;
     int collectible_count;
     int exit_count;
+    int check_coll;
+    int check_exit;
 
     void    *mlx;
     void    *win;
@@ -58,6 +62,8 @@ typedef struct s_vars
     int     width;
     int     height;
 } t_vars;
+
+
 
 
 /*void	*mlx_init(void);
@@ -82,7 +88,7 @@ void	check_errors(t_vars *vars);
 int check_map_name(char *map_name);
 
 // valid path
-//int	map_checker(t_vars *game);
+
 
 // exit~
 void free_map_memory(t_vars *vars);
@@ -97,13 +103,21 @@ void load_images(t_vars *vars);
 void draw_map(t_vars *vars);
 int	map_reading(t_vars *vars);
 
+// get next line
 char	*ft_strjoin(char *s1, char *s2);
 size_t	ft_strlen(char *s);
 int		buffer_clear(char *line);
 char	*free_buf(char *buf);
 char	*get_next_line(int fd);
 
+void	free_arr(char **arr, int height);
+void	free_temp_map(char **map);
+char	**copy_map(char **map, int height);
+void flood_fill_map(char **map, int y, int x, t_vars *vars);
+int check_flood_fill(char **map, t_vars *vars);
+int check_valid_path(t_vars *vars);
+
+
 
 
 #endif
-
