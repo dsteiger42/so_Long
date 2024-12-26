@@ -98,7 +98,6 @@ static int	add_line(t_vars *vars, char *line)
 int map_reading(t_vars *vars)
 {
     char *readmap;
-    int x, y;
 
     vars->fd = open(vars->map_file, O_RDONLY);
     if (vars->fd < 0)
@@ -112,18 +111,6 @@ int map_reading(t_vars *vars)
     }
     close(vars->fd);
     vars->width = width_of_map(vars->map[0]);
-    y = 0;
-    while (y < vars->height)
-    {
-        x = 0;
-        while (x < vars->width)
-        {
-            if (vars->map[y][x] == 'C')
-                vars->collectible_count++;
-            x++;
-        }
-        y++;
-    }
     return (1);
 }
 
