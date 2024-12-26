@@ -23,11 +23,12 @@ int main(int argc, char **argv)
     if (!map_reading(&vars))
         return (1);
     check_errors(&vars);
-    /*if (!map_checker(&vars))
-	{
-		printf("Error: Map contains invalid characters.\n");
-		return (1);
-	}*/
+    if (!check_valid_path(&vars))
+    {
+        printf("Error: No valid path to exit or collectibles!\n");
+        free_map_memory(&vars);
+        return (1);
+    }
     printf("Map loaded successfully.\n");
     vars.mlx = mlx_init();
     if (!vars.mlx)
