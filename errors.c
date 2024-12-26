@@ -93,12 +93,11 @@ void character_valid(t_vars *vars)
     
     if (vars->player_count != 1 || vars->collectible_count < 1 || vars->exit_count != 1)
     {
-        printf("Error: Something is wrong!\n");
+        printf("Error: Wrong number of 'P', 'C' or 'E'!\n");
         check_counts(vars);
         exit_game(vars);
     }
 }
-
 
 void	check_errors(t_vars *vars)
 {
