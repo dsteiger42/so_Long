@@ -11,7 +11,7 @@ static int move_player(t_vars *vars, int new_x, int new_y)
         }
         printf("Congratulations! You've collected all the items and reached the exit!\n");
         exit_game(vars);
-        return 1;
+        return (1);
     }
     if (vars->map[new_y][new_x] == '0' || vars->map[new_y][new_x] == 'C')
     {
